@@ -9,7 +9,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [latestOrder, setLatestOrder] = useState(null);
-  const [orderHistory, setOrderHistory] = useState([]); // State for history
+  const [orderHistory, setOrderHistory] = useState([]); 
 
   const addToCart = (booking) => {
     setCartItems((prevItems) => [...prevItems, booking]);
@@ -20,24 +20,24 @@ export const CartProvider = ({ children }) => {
   };
   
   const checkout = () => {
-    // Create a structured order object with a unique ID and date
+    
     const newOrder = { 
       orderId: Date.now(), 
       date: new Date(), 
       items: cartItems 
     };
 
-    // Add the new order to the beginning of the history array
+    
     setOrderHistory((prevHistory) => [newOrder, ...prevHistory]); 
     
-    setLatestOrder(newOrder); // Save for the immediate invoice page
-    setCartItems([]); // Clear the cart
+    setLatestOrder(newOrder); 
+    setCartItems([]);
   };
 
   const value = {
     cartItems,
     latestOrder,
-    orderHistory, // Expose the history to other components
+    orderHistory, 
     addToCart,
     removeFromCart,
     checkout,

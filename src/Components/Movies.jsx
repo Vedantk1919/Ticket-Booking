@@ -1,10 +1,9 @@
-import React, { useState, useMemo } from 'react'; // Import useMemo
+import React, { useState, useMemo } from 'react'; 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect } from 'react';
 
-// NOTE: We moved the data fetching logic into its own hook to simplify the component.
-// This is a common pattern in bigger applications.
+
 const useMovies = () => {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -28,28 +27,25 @@ const useMovies = () => {
 };
 
 
-// The updated Movies component now accepts a searchTerm prop
+
 const Movies = ({ searchTerm }) => {
   const { movies, loading, error } = useMovies();
-  const [selectedGenre, setSelectedGenre] = useState(''); // State for the genre filter
+  const [selectedGenre, setSelectedGenre] = useState(''); 
 
-  // --- FILTERING LOGIC ---
-  // useMemo is a performance hook. It ensures we only re-filter the movies
-  // when the movie list, search term, or selected genre actually changes.
+
   const filteredMovies = useMemo(() => {
     return movies
       .filter(movie =>
-        // 1. Filter by search term (from the Home page)
+       
         movie.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
       .filter(movie =>
-        // 2. Filter by selected genre
+      
         selectedGenre ? movie.genres.includes(selectedGenre) : true
       );
   }, [movies, searchTerm, selectedGenre]);
 
-  // --- GENRE LIST ---
-  // Create a unique list of genres from all the movies to populate our dropdown
+
   const allGenres = useMemo(() => {
     const genres = new Set();
     movies.forEach(movie => {

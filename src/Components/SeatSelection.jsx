@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-// A single seat component
+
 const Seat = ({ id, isSelected, isUnavailable, onSelect }) => {
   const getSeatColor = () => {
     if (isUnavailable) return 'bg-gray-800 cursor-not-allowed';
@@ -16,12 +16,12 @@ const Seat = ({ id, isSelected, isUnavailable, onSelect }) => {
   );
 };
 
-// The main modal component
+
 const SeatSelection = ({ movie, onClose, onConfirm }) => {
   const [selectedSeats, setSelectedSeats] = useState([]);
-  const SEAT_PRICE = 12; // Let's set a price per seat
+  const SEAT_PRICE = 12;
 
-  // Mock unavailable seats for demonstration
+ 
   const unavailableSeats = ['A3', 'C5', 'F2', 'F3'];
   const rows = ['A', 'B', 'C', 'D', 'E', 'F'];
   const seatsPerRow = 8;
@@ -29,8 +29,8 @@ const SeatSelection = ({ movie, onClose, onConfirm }) => {
   const handleSeatSelect = (seatId) => {
     setSelectedSeats((prev) =>
       prev.includes(seatId)
-        ? prev.filter((s) => s !== seatId) // Deselect if already selected
-        : [...prev, seatId] // Select if not selected
+        ? prev.filter((s) => s !== seatId) 
+        : [...prev, seatId] 
     );
   };
 

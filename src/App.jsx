@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { CartProvider } from "./Context/CartContext.jsx";
 
-// Layout and Page Imports
+
 import Layout from "./Components/Layout.jsx";
 import Home from "./Components/Home.jsx";
 import Concerts from "./Components/Concerts.jsx";
@@ -13,7 +13,7 @@ import MovieDetails from "./Components/MovieDetails.jsx";
 import Cart from "./Components/Cart.jsx";
 import Checkout from "./Components/Checkout.jsx";
 import Invoice from "./Components/Invoice.jsx";
-import Tickets from "./Components/Tickets.jsx"; // Import the new component
+import Tickets from "./Components/Tickets.jsx"; 
 
 const App = () => {
   return (

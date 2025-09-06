@@ -31,7 +31,7 @@ const MovieDetails = () => {
   const navigate = useNavigate();
   const { addToCart } = useCart();
 
-  const [movie, setMovie] = useState(null); // Starts as null
+  const [movie, setMovie] = useState(null); 
   const [loading, setLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   
@@ -62,8 +62,7 @@ const MovieDetails = () => {
     setIsModalOpen(true);
   };
 
-  // --- THIS IS THE FIX ---
-  // If loading is true, show a spinner.
+ 
   if (loading) {
     return (
       <div className="bg-[#13131a] min-h-screen flex items-center justify-center">
@@ -72,12 +71,11 @@ const MovieDetails = () => {
     );
   }
 
-  // --- AND THIS ---
-  // If loading is finished BUT the movie is still null (e.g., API error), show a message.
+  
   if (!movie) {
     return <div className="bg-[#13131a] min-h-screen text-white text-center p-10">Movie not found.</div>;
   }
-  // By the time the code reaches here, we know for sure that `movie` has data.
+  
 
   return (
     <>
@@ -85,7 +83,7 @@ const MovieDetails = () => {
         <div className="container mx-auto max-w-6xl">
           <div className="flex flex-col md:flex-row gap-8">
             <img 
-              src={movie.image.original} // This line is now safe
+              src={movie.image.original} 
               alt={movie.name}
               className="w-full md:w-1/4 h-auto object-cover rounded-lg shadow-lg"
             />
